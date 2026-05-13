@@ -1,0 +1,209 @@
+@import "tailwindcss";
+
+:root {
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --card-bg: rgba(255, 255, 255, 0.6);
+  --card-border: rgba(255, 255, 255, 0.4);
+  --accent-blue: #0066ff;
+  --accent-red: #ff3333;
+  --bg-gradient-1: #e0e7ff;
+  --bg-gradient-2: #ffe4e6;
+  --bg-gradient-3: #f8fafc;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --card-bg: rgba(15, 23, 42, 0.6);
+    --card-border: rgba(255, 255, 255, 0.08);
+    --accent-blue: #3b82f6;
+    --accent-red: #ef4444;
+    --bg-gradient-1: #0f172a;
+    --bg-gradient-2: #1e1b4b;
+    --bg-gradient-3: #31112c;
+  }
+}
+
+body {
+  background-color: var(--bg-gradient-1);
+  color: var(--text-main);
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Stunning Mesh Gradient Background */
+.mesh-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: 
+    radial-gradient(circle at 15% 50%, var(--bg-gradient-2) 0%, transparent 50%),
+    radial-gradient(circle at 85% 30%, var(--bg-gradient-1) 0%, transparent 50%),
+    radial-gradient(circle at 50% 80%, var(--bg-gradient-3) 0%, transparent 50%);
+  background-color: var(--bg-gradient-1);
+  filter: blur(80px);
+  animation: bg-shift 20s ease-in-out infinite alternate;
+}
+
+@keyframes bg-shift {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.1); }
+}
+
+/* Premium Broadcast Card */
+.broadcast-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  border: 1px solid var(--card-border);
+  border-radius: 28px;
+  box-shadow: 
+    0 10px 40px -10px rgba(0,0,0,0.1),
+    inset 0 1px 0 rgba(255,255,255,0.2);
+  overflow: hidden;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.broadcast-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 
+    0 20px 40px -10px rgba(0,0,0,0.15),
+    inset 0 1px 0 rgba(255,255,255,0.2);
+}
+
+/* Interactive Prediction Button */
+.predict-btn {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid var(--card-border);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 16px;
+  font-weight: 700;
+  color: var(--text-main);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.predict-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.1), transparent);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.predict-btn:hover {
+  transform: scale(1.02);
+  border-color: var(--accent-blue);
+  box-shadow: 0 8px 24px rgba(59, 130, 246, 0.2);
+}
+
+.predict-btn:hover::before { opacity: 1; }
+.predict-btn:active { transform: scale(0.98); }
+
+.predict-btn.blue:hover { border-color: var(--accent-blue); box-shadow: 0 8px 24px rgba(59, 130, 246, 0.2); }
+.predict-btn.red:hover { border-color: var(--accent-red); box-shadow: 0 8px 24px rgba(239, 68, 68, 0.2); }
+
+/* Progress Bar Animations */
+.progress-track {
+  background: rgba(0,0,0,0.05);
+  border-radius: 99px;
+  overflow: hidden;
+  height: 8px;
+}
+.dark .progress-track { background: rgba(255,255,255,0.1); }
+
+.progress-fill {
+  height: 100%;
+  transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.live-badge {
+  background: rgba(239, 68, 68, 0.1);
+  color: var(--accent-red);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  border-radius: 99px;
+  padding: 6px 16px;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  box-shadow: 0 0 20px rgba(239, 68, 68, 0.2);
+}
+
+.typing-indicator::after {
+  content: " ";
+  display: inline-block;
+  width: 10px;
+  height: 20px;
+  background-color: var(--accent-blue);
+  margin-left: 6px;
+  vertical-align: text-bottom;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+/* Cinematic Score Typography */
+.cinematic-score {
+  font-family: "SF Pro Display", -apple-system, sans-serif;
+  font-size: 5rem;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.05em;
+  background: linear-gradient(180deg, var(--text-main) 0%, rgba(120,120,120,0.5) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.1));
+}
+
+.apple-input {
+  background: rgba(255, 255, 255, 0.4);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 16px;
+  padding: 12px 20px;
+  outline: none;
+  transition: all 0.2s;
+  backdrop-filter: blur(12px);
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
+}
+
+.dark .apple-input {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.apple-input:focus {
+  border-color: var(--accent-blue);
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15);
+  background: var(--card-bg);
+}
+
+.apple-button {
+  background: var(--text-main);
+  color: var(--bg-gradient-1);
+  border-radius: 16px;
+  padding: 12px 24px;
+  font-weight: 700;
+  font-size: 14px;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.apple-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+}
+
+.apple-button:active {
+  transform: translateY(0);
+}
