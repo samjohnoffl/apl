@@ -2,8 +2,9 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "VOLTEX | Match Intelligence",
-  description: "A clean, real-time sports intelligence dashboard.",
+  title: "VOLTEX | Table Tennis Live Intelligence",
+  description: "AI-powered live match intelligence dashboard exclusively for Table Tennis. Real-time tactical analysis, player telemetry, win probability, and live prediction powered by Google Gemini.",
+  keywords: ["table tennis", "ping pong", "ITTF", "AI sports", "live match analysis", "Gemini AI"],
 };
 
 export const viewport: Viewport = {
